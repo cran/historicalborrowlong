@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Methods</title>
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Methods</h1>
+
+
+<div id="TOC">
+<ul>
+<li><a href="#models"><span class="toc-section-number">1</span> Models</a><ul>
+<li><a href="#definitions"><span class="toc-section-number">1.1</span> Definitions</a></li>
+<li><a href="#baseline-covariates"><span class="toc-section-number">1.2</span> Baseline covariates</a></li>
+<li><a href="#model-matrices"><span class="toc-section-number">1.3</span> Model matrices</a></li>
+<li><a href="#post-processing"><span class="toc-section-number">1.4</span> Post-processing</a></li>
+<li><a href="#hierarchical-model"><span class="toc-section-number">1.5</span> Hierarchical model</a></li>
+<li><a href="#independent-model"><span class="toc-section-number">1.6</span> Independent model</a></li>
+<li><a href="#pooled-model"><span class="toc-section-number">1.7</span> Pooled model</a></li>
+</ul></li>
+<li><a href="#borrowing-metrics"><span class="toc-section-number">2</span> Borrowing metrics</a><ul>
+<li><a href="#mean-shift-ratio"><span class="toc-section-number">2.1</span> Mean shift ratio</a></li>
+<li><a href="#variance-shift-ratio"><span class="toc-section-number">2.2</span> Variance shift ratio</a></li>
+<li><a href="#precision-ratio-hierarchical-model-only"><span class="toc-section-number">2.3</span> Precision ratio (hierarchical model only)</a></li>
+<li><a href="#adjusting-borrowing-strength-using-the-prior"><span class="toc-section-number">2.4</span> Adjusting borrowing strength using the prior</a></li>
+</ul></li>
+</ul>
+</div>
+
+<p>This vignette defines the models and historical borrowing metrics supported in the <code>historicalborrowlong</code> package.</p>
+<div id="models" class="section level1">
+<h1><span class="header-section-number">1</span> Models</h1>
+<div id="definitions" class="section level2">
+<h2><span class="header-section-number">1.1</span> Definitions</h2>
+<p>Unless otherwise specified, Greek letters refer to parameters estimated by the model, and Roman letters refer to fixed hyperparameters and other constants set by the user in advance.</p>
+<ul>
+<li>“Study”: a clinical trial. Could be a borrowed clinical trial from the past or a current clinical trial under analysis.</li>
+<li>“Group”: a study arm, such as a treatment group or placebo group.</li>
+<li>“Rep”: a repeated measure in the context of repeated measures / longitudinal modeling. Could be a time point such as a study visit.</li>
+<li><span class="math inline">\(k\)</span>: study index.</li>
+<li><span class="math inline">\(K\)</span>: index of the current study.</li>
+<li><span class="math inline">\(y_k\)</span>: vector of patient-by-rep clinical responses to a continuous outcome variable for study <span class="math inline">\(k\)</span>.</li>
+<li><span class="math inline">\((X)_{k}\)</span>: the row of matrix <span class="math inline">\(X\)</span> corresponding to study <span class="math inline">\(k\)</span>.</li>
+<li><span class="math inline">\(\alpha\)</span>: Vector of control group mean parameters, one for each rep for the pooled model, one for each study and rep in the hierarchical and independent models. The first elements are for the historical studies, and the last one is for the current study.</li>
+<li><span class="math inline">\(\delta\)</span>: Vector of study-specific treatment mean parameters. There is one for each combination of study, non-control treatment group, and rep. An optional constraint may be added to pool all arms at baseline within each study, which reduces the number of elements of <span class="math inline">\(\delta\)</span>.</li>
+<li><span class="math inline">\(d\)</span>: integer index for the elements of <span class="math inline">\(\delta\)</span>.</li>
+<li><span class="math inline">\(b\)</span>: integer index for the elements of <span class="math inline">\(\beta\)</span>.</li>
+<li><span class="math inline">\(t\)</span>: index of a rep (e.g. time point of a repeated measure such as a patient visit in a clinical trial.)</li>
+<li><span class="math inline">\(\beta\)</span>: Vector of study-specific baseline covariate parameters.</li>
+<li><span class="math inline">\(X_\alpha\)</span>: model matrix for the control group mean parameters <span class="math inline">\(\alpha\)</span>. It has indicator columns to select the appropriate element of <span class="math inline">\(\alpha\)</span> for each element of <span class="math inline">\(y_k\)</span>.</li>
+<li><span class="math inline">\(X_\delta\)</span>: model matrix for the treatment mean parameters <span class="math inline">\(\delta\)</span>. It has indicator columns to select the appropriate element of <span class="math inline">\(\delta\)</span> for each element of <span class="math inline">\(y_k\)</span>.</li>
+<li><span class="math inline">\(X_\beta\)</span>: model matrix for the baseline covariate fixed effect parameters <span class="math inline">\(\beta\)</span>. It has indicator columns to select the appropriate element of <span class="math inline">\(\beta\)</span> for each element of <span class="math inline">\(y_k\)</span>.</li>
+<li><span class="math inline">\(\sigma_k\)</span>: Vector of rep-specific residual standard deviations for study <span class="math inline">\(k\)</span>.</li>
+<li><span class="math inline">\(\Lambda_k\)</span>: lower-triangular Cholesky factor of the by-rep residual correlation matrix for study <span class="math inline">\(k\)</span>.</li>
+<li><span class="math inline">\(N_k\)</span>: number of patients in study <span class="math inline">\(k\)</span>.</li>
+<li><span class="math inline">\(\Sigma_k\)</span>: by-rep residual covariance matrix of study <span class="math inline">\(k\)</span>.</li>
+<li><span class="math inline">\(T\)</span>: number of repeated measures per subject.</li>
+<li><span class="math inline">\(I_T\)</span>: identity matrix with rows and columns equal to the number of repeated measures per subject.</li>
+<li><span class="math inline">\(I(\cdot)\)</span>: indicator function</li>
+<li><span class="math inline">\(\Lambda\)</span>: Cholesky factor of the <span class="math inline">\(T \times T\)</span> block of the correlation matrix of the observed data for the current (non-historical) study.</li>
+<li><span class="math inline">\(AR(1)(n, \rho)\)</span>: an AR(1) correlation matrix with <span class="math inline">\(n\)</span> rows and correlation parameter <span class="math inline">\(\rho\)</span>.</li>
+<li><span class="math inline">\(m_k\)</span> index to indicate the type of residual covariance of study <span class="math inline">\(k\)</span>: 1 for unstructured / fully parameterized, 2 for AR(1), and 3 for diagonal.</li>
+</ul>
+</div>
+<div id="baseline-covariates" class="section level2">
+<h2><span class="header-section-number">1.2</span> Baseline covariates</h2>
+<p>The baseline covariates model matrix <span class="math inline">\(X_\beta\)</span> adjusts for baseline covariates. It may contain a continuous column for baseline and binary indicator columns for the levels of user-defined covariates. All these columns are included if possible, but the method automatically drops baseline covariate columns to ensure that the combine model matrix <span class="math inline">\(X_k^* = \left [ {X_\alpha}^* \quad {X_\delta}^* \quad {X_\beta}^* \right ]_k\)</span> is full rank, where <span class="math inline">\(X_k^*\)</span> denotes the rows of matrix <span class="math inline">\(X\)</span> corresponding to study <span class="math inline">\(k\)</span>, with additional rows dropped if the corresponding elements of <span class="math inline">\(y\)</span> are missing. The choice of columns to drop from <span class="math inline">\({X_\beta}_k^*\)</span> is determined by the rank and pivoting strategy of the QR decomposition of <span class="math inline">\(X_k\)</span> using the Householder algorithm with pivoting (<code>base::qr()</code>, LINPACK routine DQRDC).</p>
+<p>Separately within each study, each column of <span class="math inline">\(X_\beta\)</span> is centered to have mean 0, and if possible, scaled to have variance 1. Scaling ensures that the priors on parameters <span class="math inline">\(\beta\)</span> remain relatively diffuse relative to the input data. Study-level centering ensures that the <span class="math inline">\(\alpha\)</span> parameters truly act as <em>unconditional</em> study-specific control group means (as opposed to conditional on the subset of patients at the reference level of <span class="math inline">\(X_\beta\)</span>), and it ensures that borrowing across <span class="math inline">\(\alpha\)</span> components fully presents as control group borrowing.</p>
+</div>
+<div id="model-matrices" class="section level2">
+<h2><span class="header-section-number">1.3</span> Model matrices</h2>
+<p>Each primary model is parameterized thus:</p>
+<p><span class="math display">\[
+\begin{aligned}
+E(y) = \left( X_\alpha \right)_k \alpha + \left ( X_\delta \right)_k \delta + \left ( X_\beta  \right)_k \beta
+\end{aligned}
+\]</span></p>
+<p>Above, <span class="math inline">\(\left (X_\alpha \right)_k\)</span>, <span class="math inline">\(\left (X_\delta \right)_k\)</span>, and <span class="math inline">\(\left (X_\beta \right)_k\)</span> are fixed matrices for study <span class="math inline">\(k\)</span>. <span class="math inline">\(\left (X_\beta \right)_k\)</span> is a conventional model matrix for the baseline covariates <span class="math inline">\(\beta\)</span>, and the details are explained in the “Baseline covariates” section below. <span class="math inline">\(\left (X_\alpha \right)_k\)</span> is a matrix of zeroes and ones. It is constructed such that each scalar component of <span class="math inline">\(\alpha\)</span> is the mean response of the control group in a particular study at a given time point. Likewise, <span class="math inline">\(\left (X_\delta \right)_k\)</span> is a matrix of zeroes and ones such that each scalar component of <span class="math inline">\(\delta\)</span> is the mean response of a non-control treatment group in a particular study at a given time point.</p>
+<p>To illustrate, let <span class="math inline">\(y_{ijkt}\)</span> be patient <span class="math inline">\(i\)</span> in treatment group <span class="math inline">\(j\)</span> (where <span class="math inline">\(j = 1\)</span> is the control group) of study <span class="math inline">\(k\)</span> at time point <span class="math inline">\(t\)</span>, and let <span class="math inline">\(\left ( X_\beta \beta \right )_{ijkt}\)</span> be the corresponding scalar element of the vector <span class="math inline">\(\left ( X_\beta \right ) \beta\)</span>. Then,</p>
+<p><span class="math display">\[
+\begin{aligned}
+E(y_{ijkt}) = I (j = 1) \alpha_{kt} + I (j &gt; 1) \delta_{jkt} + \left ( X_\beta \beta \right )_{ijkt}
+\end{aligned}
+\]</span></p>
+<p>In addition, if the constraint in the parameterization is activated (i.e. <code>hbl_mcmc_hierarchical(constraint = TRUE)</code>) then the control and treatment patients are pooled at time point <span class="math inline">\(t = 1\)</span> within each study <span class="math inline">\(k\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+E(y_{ijk1}) = \alpha_{k1} + \left ( X_\beta \beta \right )_{ijk1}
+\end{aligned}
+\]</span></p>
+<p>This parameterization is represented in the more compact expression <span class="math inline">\(\left( X_\alpha \right)_k \alpha + \left ( X_\delta \right)_k \delta + \left ( X_\beta \right)_k \beta\)</span> in the model definitions in this vignette.</p>
+</div>
+<div id="post-processing" class="section level2">
+<h2><span class="header-section-number">1.4</span> Post-processing</h2>
+<p>The <code>hbl_summary()</code> function post-processes the results from the model. It accepts MCMC samples of parameters and returns interpretable group-level posterior summaries such as change from baseline response and treatment effect. To arrive at these summaries, <code>hbl_summary()</code> computes marginal posteriors of transformed parameters. The transformations derive patient-level fitted values from model parameters, then derive group-level responses as averages of fitted values. We refer to this style of estimation as “unconditional estimation”, as opposed to “conditional estimation”, which takes each group mean to be the appropriate linear combination of the relevant <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\delta\)</span> parameters, without using <span class="math inline">\(\beta\)</span> components or going through fitted values. If the baseline covariates are balanced across studies, unconditional and conditional estimation should produce similar estimates of control and treatment effects. This approach to post-processing is explained in section III.C of the <a href="https://www.fda.gov/media/148910/download">FDA draft guidance on adjusting for covariates</a>.</p>
+</div>
+<div id="hierarchical-model" class="section level2">
+<h2><span class="header-section-number">1.5</span> Hierarchical model</h2>
+<p>Functions:</p>
+<ul>
+<li><code>hbl_sim_hierarchical()</code></li>
+<li><code>hbl_mcmc_hierarchical()</code></li>
+<li><code>hbl_s_tau()</code></li>
+</ul>
+<p>The hierarchical model analyzes the data from all studies and shrinks the control study-by-rep means <span class="math inline">\(\alpha_{kt}\)</span> (one scalar parameter for each unique combination of study and rep) towards a common normal distribution with mean <span class="math inline">\(\mu_t\)</span> and variance <span class="math inline">\(\tau_t^2\)</span>. For each study in the data (both current and historical), the covariance is user-defined. Options include:</p>
+<ol style="list-style-type: decimal">
+<li>Fully parameterized (“unstructured”) with a separation strategy with the LKJ prior to model within-subject correlations among residuals.</li>
+<li>AR(1) variances <span class="math inline">\(\sigma_k\)</span> and correlation <span class="math inline">\(\rho_k\)</span>.</li>
+<li>Diagonal with variances <span class="math inline">\(\sigma_k\)</span>.</li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; y_k \sim \text{MVN}((X_\alpha)_k \cdot \alpha + (X_\delta)_k \cdot \delta + (X_\beta)_k \cdot \beta, \ I_{N_k} \otimes \Sigma_k ) \\
+&amp; \qquad \alpha_{kt} \stackrel{\text{ind}}{\sim} \text{Normal} (\mu_t, \tau_t^2) \\
+&amp; \qquad \qquad \mu_t \stackrel{\text{ind}}{\sim} \text{Normal}(0, s_\mu^2) \\
+&amp; \qquad \qquad \tau_t \stackrel{\text{ind}}{\sim} \text{Uniform}(0, s_\tau) \\
+&amp; \qquad \delta_{dt} \stackrel{\text{ind}}{\sim} \text{Normal} (0, s_\delta^2) \\
+&amp; \qquad \beta_{b} \stackrel{\text{ind}}{\sim} \text{Normal} (0, s_\beta^2) \\
+&amp; \qquad \Sigma_k = \left (I_T \sigma_k \right ) \Lambda_k \Lambda_k' \left (I_T \sigma_k \right ) \\
+&amp; \qquad \qquad \sigma_{k1}, \ldots, \sigma_{kT} \stackrel{\text{ind}}{\sim} \text{Uniform}(0, s_\sigma) \\
+&amp; \qquad \qquad \Lambda_k \Lambda_k' \sim \begin{cases}
+  \text{LKJ}(\text{shape} = s_\lambda, \ \text{order} = T) &amp;&amp; m_k = 1 \\
+  \text{AR(1)}(T,\rho_k) &amp;&amp; m_k = 2 \\
+  I_T &amp;&amp; m_k = 3 \\
+\end{cases} \\
+&amp; \qquad \qquad \rho_k \stackrel{\text{ind}}{\sim} \text{Uniform}(-1, 1) \qquad (\text{only for } m_k = 2)
+\end{aligned} 
+\]</span></p>
+</div>
+<div id="independent-model" class="section level2">
+<h2><span class="header-section-number">1.6</span> Independent model</h2>
+<p>Functions:</p>
+<ul>
+<li><code>hbl_sim_independent()</code></li>
+<li><code>hbl_mcmc_independent()</code></li>
+</ul>
+<p>The independent model is the same as the hierarchical model, but with independent control group parameters <span class="math inline">\(\alpha\)</span>. We use it as a no-borrowing benchmark to quantify the borrowing strength of the hierarchical model.</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; y_k \sim \text{MVN}((X_\alpha)_k \cdot \alpha + (X_\delta)_k \cdot \delta + (X_\beta)_k \cdot \beta, \ I_{N_k} \otimes \Sigma_k ) \\
+&amp; \qquad \alpha_{kt} \stackrel{\text{ind}}{\sim} \text{Normal} (0, s_\alpha^2) \\
+&amp; \qquad \delta_{dt} \stackrel{\text{ind}}{\sim} \text{Normal} (0, s_\delta^2) \\
+&amp; \qquad \beta_{b} \stackrel{\text{ind}}{\sim} \text{Normal} (0, s_\beta^2) \\
+&amp; \qquad \Sigma_k = \left (I_T \sigma_k \right ) \Lambda_k \Lambda_k' \left (I_T \sigma_k \right ) \\
+&amp; \qquad \qquad \sigma_{k1}, \ldots, \sigma_{kT} \stackrel{\text{ind}}{\sim} \text{Uniform}(0, s_\sigma) \\
+&amp; \qquad \qquad \Lambda_k \Lambda_k' \sim \begin{cases}
+  \text{LKJ}(\text{shape} = s_\lambda, \ \text{order} = T) &amp;&amp; m_k = 1 \\
+  \text{AR(1)}(T,\rho_k) &amp;&amp; m_k = 2 \\
+  I_T &amp;&amp; m_k = 3 \\
+\end{cases} \\
+&amp; \qquad \qquad \rho_k \stackrel{\text{ind}}{\sim} \text{Uniform}(-1, 1) \qquad (\text{only for } m_k = 2)
+\end{aligned} 
+\]</span></p>
+</div>
+<div id="pooled-model" class="section level2">
+<h2><span class="header-section-number">1.7</span> Pooled model</h2>
+<p>Functions:</p>
+<ul>
+<li><code>hbl_sim_pool()</code></li>
+<li><code>hbl_mcmc_pool()</code></li>
+</ul>
+<p>The pooled model is the same as the independent model, but with rep-specific control means pooled across studies. In other words <span class="math inline">\(\alpha_{kt}\)</span> loses the <span class="math inline">\(k\)</span> subscript, and we use a smaller matrix <span class="math inline">\(\left (X_\alpha^{\text{pool}} \right )_k\)</span> instead of <span class="math inline">\((X_\alpha)_k\)</span>. <span class="math inline">\(\left (X_\alpha^{\text{pool}} \right )_k\)</span> has fewer columns (rep-specific rather than study-by-rep-specific). Like the independent model, we use it as a no-borrowing benchmark to quantify the borrowing strength of the hierarchical model.</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; y_k \sim \text{MVN}((X_\alpha^{\text{pool}})_k \cdot \alpha + (X_\delta)_k \cdot \delta + (X_\beta)_k \cdot \beta, \ I_{N_k} \otimes \Sigma_k ) \\
+&amp; \qquad \alpha_{t} \stackrel{\text{ind}}{\sim} \text{Normal} (0, s_\alpha^2) \\
+&amp; \qquad \delta_{dt} \stackrel{\text{ind}}{\sim} \text{Normal} (0, s_\delta^2) \\
+&amp; \qquad \beta_{b} \stackrel{\text{ind}}{\sim} \text{Normal} (0, s_\beta^2) \\
+&amp; \qquad \Sigma_k = \left (I_T \sigma_k \right ) \Lambda_k \Lambda_k' \left (I_T \sigma_k \right ) \\
+&amp; \qquad \qquad \sigma_{k1}, \ldots, \sigma_{kT} \stackrel{\text{ind}}{\sim} \text{Uniform}(0, s_\sigma) \\
+&amp; \qquad \qquad \Lambda_k \Lambda_k' \sim \begin{cases}
+  \text{LKJ}(\text{shape} = s_\lambda, \ \text{order} = T) &amp;&amp; m_k = 1 \\
+  \text{AR(1)}(T,\rho_k) &amp;&amp; m_k = 2 \\
+  I_T &amp;&amp; m_k = 3 \\
+\end{cases} \\
+&amp; \qquad \qquad \rho_k \stackrel{\text{ind}}{\sim} \text{Uniform}(-1, 1) \qquad (\text{only for } m_k = 2)
+\end{aligned} 
+\]</span></p>
+</div>
+</div>
+<div id="borrowing-metrics" class="section level1">
+<h1><span class="header-section-number">2</span> Borrowing metrics</h1>
+<div id="mean-shift-ratio" class="section level2">
+<h2><span class="header-section-number">2.1</span> Mean shift ratio</h2>
+<p>Let <span class="math inline">\(\theta_m\)</span> be the posterior mean control group response estimated by model <span class="math inline">\(m\)</span> at a given rep. The mean shift ratio is:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{\theta_{m*} - \theta_{\text{independent}}}{\theta_{\text{pool}} - \theta_{\text{independent}}}
+\end{aligned}
+\]</span></p>
+<p>where <span class="math inline">\(m*\)</span> is a historical borrowing model such as the hierarchical model featured here.</p>
+</div>
+<div id="variance-shift-ratio" class="section level2">
+<h2><span class="header-section-number">2.2</span> Variance shift ratio</h2>
+<p>Let <span class="math inline">\(V_m\)</span> be the estimated posterior variance of <span class="math inline">\(\alpha_I\)</span> (current study control group response mean) estimated by model <span class="math inline">\(m\)</span> at a given rep. The variance shift ratio is:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{V_{m*} - V_{\text{independent}}}{V_{\text{pool}} - V_{\text{independent}}}
+\end{aligned}
+\]</span></p>
+<p>where <span class="math inline">\(m*\)</span> is a historical borrowing model such as the hierarchical model featured here.</p>
+</div>
+<div id="precision-ratio-hierarchical-model-only" class="section level2">
+<h2><span class="header-section-number">2.3</span> Precision ratio (hierarchical model only)</h2>
+<p>The precision ratio compares the prior precision of a control mean response (an <span class="math inline">\(\alpha\)</span> component, numerator) to the analogous precision of the full conditional distribution (denominator). The former is <span class="math inline">\(\frac{1}{\tau^2}\)</span>, and the latter is <span class="math inline">\(\frac{1}{\tau^2} + \frac{n}{\sigma^2}\)</span>. Here, <span class="math inline">\(n\)</span> is the number of non-missing observed patients in the current study at the given rep, <span class="math inline">\(\sigma^2\)</span> is the residual variance at the given rep, and <span class="math inline">\(\tau^2\)</span> is the variance of study-specific control means (components of <span class="math inline">\(\alpha\)</span>) at the given rep. The precision ratio is calculated on a rep-by-rep basis. The full precision ratio formula is:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{\frac{1}{\tau^2}}{\frac{1}{\tau^2} + \frac{n}{\sigma^2}}
+\end{aligned}
+\]</span></p>
+<p>The precision ratio comes from the conditional distribution of <span class="math inline">\(\alpha_k\)</span> in the hierarchical model given the other parameters and the data. More precisely, in this conditional distribution, the mean is a weighted average between the prior mean and data mean, and the precision ratio is the weight on the prior mean. This can be seen in a simpler case with a Bayesian model with a normal data model, a normal prior on the mean, and known constant variance. For details, see Chapter 2 of <a href="http://www.stat.columbia.edu/~gelman/book/">Bayesian Data Analysis</a> 3rd Ed. by Gelman et al.</p>
+</div>
+<div id="adjusting-borrowing-strength-using-the-prior" class="section level2">
+<h2><span class="header-section-number">2.4</span> Adjusting borrowing strength using the prior</h2>
+<p>It is almost always best to set a diffuse prior on <span class="math inline">\(\tau_t\)</span> so that hierarchical borrowing is fully dynamic. However, in extreme cases (e.g. few historical studies, combined with other issues), there may not be enough information to estimate the hierarchical variance <span class="math inline">\(\tau_t^2\)</span>, so the model may exhibit weaker borrowing than it should. To roughly target a given minimum amount of borrowing, one option is to set the upper bound <span class="math inline">\(s_\tau\)</span> of the uniform prior of <span class="math inline">\(\tau_t\)</span>. In the case where there are few studies, the function <code>hbl_s_tau()</code> suggests a value of <span class="math inline">\(s_\tau\)</span> that assigns a desired prior precision ratio. Suppose <span class="math inline">\(P\)</span> is the desired prior precision ratio. Taking <span class="math inline">\(\tau^2\)</span> and <span class="math inline">\(\sigma^2\)</span> to be scalar variances of the control means and residuals, respectively, and taking <span class="math inline">\(n\)</span> to be the number of non-missing observed patient in at a given rep in the current study:</p>
+<p><span class="math display">\[
+\begin{aligned}
+P = \frac{\frac{1}{\tau^2}}{\frac{1}{\tau^2} + \frac{n}{\sigma^2}}
+\end{aligned}
+\]</span></p>
+<p>Solving for <span class="math inline">\(\tau\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\tau = \sigma \sqrt{\frac{1}{n} \left ( \frac{1}{P} - 1 \right )}
+\end{aligned}
+\]</span></p>
+<p>If we expect the mean of <span class="math inline">\(\tau\)</span> to be as above, then our uniform upper bound is double. This is the value returned by <code>hbl_s_tau()</code>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+s_\tau = 2 \sigma \sqrt{\frac{1}{n} \left ( \frac{1}{P} - 1 \right )}
+\end{aligned}
+\]</span></p>
+<p>If you do set a small <span class="math inline">\(s_\tau\)</span>, be aware that the marginal probability mass of each <span class="math inline">\(\tau_t\)</span> may pile up at the uniform prior upper bound. This is generally a sign of poor prior specification in Bayesian models, and you can monitor it with <code>hbl_plot_tau()</code>.</p>
+</div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
